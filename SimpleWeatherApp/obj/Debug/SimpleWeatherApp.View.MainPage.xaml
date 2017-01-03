@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SimpleWeatherApp.MainPage">
+	<ContentPage.Content>
+		<StackLayout Padding="30">
+			<StackLayout Orientation="Horizontal">
+				<Entry HorizontalOptions="FillAndExpand" Placeholder="City" x:Name="City" />
+				<Entry Placeholder="2 letter state" x:Name="State" />
+			</StackLayout>
+
+			<StackLayout>
+				<Button Text="Search city and state for 10-day forecast" Clicked="OnClicked" FontSize="12" />
+				<Button Text="Check my location for weather conditions" Clicked="GetLocation" FontSize="12" />
+			</StackLayout>
+
+			<StackLayout Orientation="Horizontal">
+				<Label Text="{Binding ConditionString}" HorizontalOptions="StartAndExpand" FontSize="10" />
+				<Image Source="{Binding CurrentIconUrl}" HorizontalOptions="End" />
+			</StackLayout>
+			
+			<ListView ItemsSource="{Binding ListSource}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Orientation="Horizontal">
+								<Image Source="{Binding icon_url}" HorizontalOptions="Start" />
+								<Label Text="{Binding title}" HorizontalOptions="Center" WidthRequest="130" Font="12" />
+								<Label Text="{Binding fcttext}" HorizontalOptions="End" WidthRequest="220" Font="10" />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
